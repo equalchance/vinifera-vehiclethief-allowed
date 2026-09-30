@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "actual_x86_sizes": {
+    "baseline": {
+      "TechnoTypeClassExtension": 848,
+      "UnitTypeClassExtension": 880,
+      "AircraftTypeClassExtension": 872
+    },
+    "feature": {
+      "TechnoTypeClassExtension": 848,
+      "UnitTypeClassExtension": 880,
+      "AircraftTypeClassExtension": 872,
+      "field_offset": 844
+    }
+  },
+  "save_version_delta": 1,
+  "scope": "Actual extension headers compiled with project flags. Save-version base advances by one plus the measured derived-size changes. Does not verify native save/load."
+}

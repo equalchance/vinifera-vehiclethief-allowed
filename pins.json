@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "upstream_commit": "a02a90f816328ac59f94b455982d22979fed1de1",
+  "submodules": {
+    "SDL": "63901401cab9051012d85c4bf245bea23687dce0",
+    "TSpp": "8f5444216175ecb65215b4b89920c7b31741901b",
+    "imgui": "b61e56346a92cfcaf1f43a545ca37b0b32239654",
+    "miniaudio": "7dface14c22c20f704974bfb0c4a5a18ac14f1d8"
+  },
+  "runtime_supplements_commit": "87c7f3433c4acad2da54e8494e50c3b4240a146f",
+  "compiler": "MSVC 14.44.35207 x86",
+  "configuration": "RelWithDebInfo",
+  "generator": "Ninja",
+  "cmake_options": {
+    "PREVIEW": true,
+    "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+    "CMAKE_SHARED_LINKER_FLAGS": "/PDBSTRIPPED:../symbols/<label>.pdb"
+  },
+  "python_audit_dependencies": {
+    "capstone": "5.0.6",
+    "pefile": "2024.8.26"
+  },
+  "source_patch_sha256": "5179e15bf023ee4f0992c35cb22a14d76212faf1f7404922cbefe6505ae144cb",
+  "modified_sources": {
+    "CREDITS.md": "7a5d0d26a2371c5492867139f576de40788c595df0a976c8b9f7867f6d36d632",
+    "docs/New-Features-and-Enhancements.md": "f3cd718b0783abfb9d7154fb80823d5ea11e4978e4b4a696fae90fe081dce706",
+    "docs/Whats-New.md": "b9cf8e8ac64858a75d5e6cc9ddc8e28af618c4423c026dce53f117f82ab93f07",
+    "src/extensions/extension.cpp": "11ceb0d6c12acb3187e6fb3f9f54a92d3778ef7a947533a621cf86f5e249f76d",
+    "src/extensions/infantry/infantryext_hooks.cpp": "af8022012f2198c96ccfdd647206a9d985061d1c64a1c122f8ced630f5c08e8c",
+    "src/extensions/techno/technoext_hooks.cpp": "de7330ef37ce6d404a0d02e71a6f65c941c088ccd70fbd4e3b2ae1f9784e91d2",
+    "src/extensions/technotype/technotypeext.cpp": "3c5766de8238c3a78dda9bf3a8178efef2c79dd40eec1c2a77a50cdb9dfd68f5",
+    "src/extensions/technotype/technotypeext.h": "ebba19fd94578a3245d85f55b666b7a734937b0b4cd4b917cf5a190cd3146c9a"
+  },
+  "native_acceptance": "PENDING",
+  "ti_private_build_acceptance": "PENDING",
+  "matched_runtime": {
+    "game_exe_sha256": "1956ba3883b8a78d3bba338e2b04e75002d78a8c7f21cfc1e77708e5690f7e7e",
+    "launcher_sha256": "b63671fb0ff4b14f68528710294bd9bca771cd47c6596d394dd2e56dbf1f0334",
+    "feature_dll_sha256": "86d93f2caf787ef3a60f6554320e6f3ca689958e800ff1a7c66773586bc5c671",
+    "feature_pdb_sha256": "7c71485fdafd7787bbbb427a4128e0c48daf474b5d1425a1c65d68bec9214f32"
+  }
+}

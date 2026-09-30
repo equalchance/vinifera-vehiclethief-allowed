@@ -1,0 +1,35 @@
+{
+  "status": "PASS_SOURCE_REVIEW_NATIVE_EVIDENCE_GAPS_RETAINED",
+  "base": "a02a90f816328ac59f94b455982d22979fed1de1",
+  "diff": "git diff a02a90f816328ac59f94b455982d22979fed1de1 (uncommitted working tree)",
+  "standards": {
+    "documented_violations": 0,
+    "actionable_smells": 0,
+    "source": "source/docs/Contributing.md"
+  },
+  "spec": {
+    "confirmed_implementation_defects": 0,
+    "scope_creep": 0,
+    "independent_hook_disassembly": "registers and rejected continuations match all five sites"
+  },
+  "source_hashes": {
+    "CREDITS.md": "7a5d0d26a2371c5492867139f576de40788c595df0a976c8b9f7867f6d36d632",
+    "docs/New-Features-and-Enhancements.md": "f3cd718b0783abfb9d7154fb80823d5ea11e4978e4b4a696fae90fe081dce706",
+    "docs/Whats-New.md": "b9cf8e8ac64858a75d5e6cc9ddc8e28af618c4423c026dce53f117f82ab93f07",
+    "src/extensions/extension.cpp": "11ceb0d6c12acb3187e6fb3f9f54a92d3778ef7a947533a621cf86f5e249f76d",
+    "src/extensions/infantry/infantryext_hooks.cpp": "af8022012f2198c96ccfdd647206a9d985061d1c64a1c122f8ced630f5c08e8c",
+    "src/extensions/techno/technoext_hooks.cpp": "de7330ef37ce6d404a0d02e71a6f65c941c088ccd70fbd4e3b2ae1f9784e91d2",
+    "src/extensions/technotype/technotypeext.cpp": "3c5766de8238c3a78dda9bf3a8178efef2c79dd40eec1c2a77a50cdb9dfd68f5",
+    "src/extensions/technotype/technotypeext.h": "ebba19fd94578a3245d85f55b666b7a734937b0b4cd4b917cf5a190cd3146c9a"
+  },
+  "report": "docs/TESTING.md",
+  "unverified_native": [
+    "forced capture execution",
+    "Thief-only proximity",
+    "automatic acquisition",
+    "queued orders",
+    "restored forbidden destinations"
+  ],
+  "ti_private_build": "PENDING",
+  "submitted_upstream": false
+}

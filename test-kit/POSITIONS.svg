@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="650" viewBox="0 0 1060 650">
+<rect width="1060" height="650" fill="#111827"/>
+<g font-family="Segoe UI,Arial,sans-serif" fill="#f9fafb">
+<text x="30" y="38" font-size="25">Offline fixture: enemy positions</text>
+<text x="30" y="68" font-size="16">Initial placement, before units move. Screen projection; spacing is illustrative.</text>
+<rect x="540" y="115" width="165" height="70" rx="6" fill="#1f2937" stroke="#6ee7b7" stroke-width="2"/>
+<text x="548" y="138" font-size="15" fill="#6ee7b7">VTDEFAULT</text>
+<text x="548" y="158" font-size="12">Buggy; omitted</text>
+<text x="548" y="176" font-size="12">Cell 42, 118</text>
+<rect x="710" y="195" width="165" height="70" rx="6" fill="#1f2937" stroke="#6ee7b7" stroke-width="2"/>
+<text x="718" y="218" font-size="15" fill="#6ee7b7">VTYES</text>
+<text x="718" y="238" font-size="12">Buggy; yes</text>
+<text x="718" y="256" font-size="12">Cell 44, 118</text>
+<rect x="880" y="275" width="165" height="70" rx="6" fill="#1f2937" stroke="#f87171" stroke-width="2"/>
+<text x="888" y="298" font-size="15" fill="#f87171">VTNO</text>
+<text x="888" y="318" font-size="12">Buggy; no</text>
+<text x="888" y="336" font-size="12">Cell 46, 118</text>
+<rect x="370" y="195" width="165" height="70" rx="6" fill="#1f2937" stroke="#fbbf24" stroke-width="2"/>
+<text x="378" y="218" font-size="15" fill="#fbbf24">VTLEGACY</text>
+<text x="378" y="238" font-size="12">Buggy; NonVehicle=yes</text>
+<text x="378" y="256" font-size="12">Cell 42, 120</text>
+<rect x="540" y="275" width="165" height="70" rx="6" fill="#1f2937" stroke="#f87171" stroke-width="2"/>
+<text x="548" y="298" font-size="15" fill="#f87171">VTDRONE</text>
+<text x="548" y="318" font-size="12">Damaged buggy; no</text>
+<text x="548" y="336" font-size="12">Cell 44, 120</text>
+<rect x="710" y="355" width="165" height="70" rx="6" fill="#1f2937" stroke="#6ee7b7" stroke-width="2"/>
+<text x="718" y="378" font-size="15" fill="#6ee7b7">VTLIMIT</text>
+<text x="718" y="398" font-size="12">Tick Tank; omitted</text>
+<text x="718" y="416" font-size="12">Cell 46, 120</text>
+<rect x="200" y="275" width="165" height="70" rx="6" fill="#1f2937" stroke="#6ee7b7" stroke-width="2"/>
+<text x="208" y="298" font-size="15" fill="#6ee7b7">VTTRAIN</text>
+<text x="208" y="318" font-size="12">Locomotive; omitted</text>
+<text x="208" y="336" font-size="12">Cell 42, 122</text>
+<rect x="370" y="355" width="165" height="70" rx="6" fill="#1f2937" stroke="#f87171" stroke-width="2"/>
+<text x="378" y="378" font-size="15" fill="#f87171">VTTRANSPORT</text>
+<text x="378" y="398" font-size="12">APC; no</text>
+<text x="378" y="416" font-size="12">Cell 44, 122</text>
+<rect x="540" y="435" width="165" height="70" rx="6" fill="#1f2937" stroke="#6ee7b7" stroke-width="2"/>
+<text x="548" y="458" font-size="15" fill="#6ee7b7">HARV</text>
+<text x="548" y="478" font-size="12">Harvester; omitted</text>
+<text x="548" y="496" font-size="12">Cell 46, 122</text>
+<rect x="30" y="355" width="165" height="70" rx="6" fill="#1f2937" stroke="#6ee7b7" stroke-width="2"/>
+<text x="38" y="378" font-size="15" fill="#6ee7b7">VTAIRDEFAULT</text>
+<text x="38" y="398" font-size="12">Orca; omitted</text>
+<text x="38" y="416" font-size="12">Cell 42, 124</text>
+<rect x="200" y="435" width="165" height="70" rx="6" fill="#1f2937" stroke="#6ee7b7" stroke-width="2"/>
+<text x="208" y="458" font-size="15" fill="#6ee7b7">VTAIRYES</text>
+<text x="208" y="478" font-size="12">Orca; yes</text>
+<text x="208" y="496" font-size="12">Cell 44, 124</text>
+<rect x="370" y="515" width="165" height="70" rx="6" fill="#1f2937" stroke="#f87171" stroke-width="2"/>
+<text x="378" y="538" font-size="15" fill="#f87171">VTAIRNO</text>
+<text x="378" y="558" font-size="12">Orca; no</text>
+<text x="378" y="576" font-size="12">Cell 46, 124</text>
+<text x="30" y="592" font-size="16">VTNO is the third enemy buggy along the upper diagonal, down and right from VTDEFAULT.</text>
+<text x="30" y="621" font-size="16">Friendly damaged VTDRONE is beside the MRV, separate from this enemy group.</text>
+</g></svg>

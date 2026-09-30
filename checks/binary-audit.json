@@ -1,0 +1,170 @@
+{
+  "status": "PASS",
+  "executable_sha256": "1956ba3883b8a78d3bba338e2b04e75002d78a8c7f21cfc1e77708e5690f7e7e",
+  "binaries": {
+    "baseline": {
+      "dll_sha256": "c25f952cc85c2dd4328b744f8393e1f105844fb32e5a2c377c6d49ccb20452c6",
+      "pdb_sha256": "b5814b69bc504c20c6feffe9c5f9d8ca91a576cbd8f46153c34c3bf58be55b3e",
+      "codeview_guid_bytes": "66d859079531cd4c90e62c818aa36338",
+      "pdb_age": 1,
+      "machine": "I386"
+    },
+    "feature": {
+      "dll_sha256": "86d93f2caf787ef3a60f6554320e6f3ca689958e800ff1a7c66773586bc5c671",
+      "pdb_sha256": "7c71485fdafd7787bbbb427a4128e0c48daf474b5d1425a1c65d68bec9214f32",
+      "codeview_guid_bytes": "cc3c9ea0b0989b40badcc854f57021de",
+      "pdb_age": 5,
+      "machine": "I386"
+    }
+  },
+  "hooks": [
+    {
+      "address": "0x004D32E4",
+      "size": 6,
+      "name": "_InfantryClass_Per_Cell_Process_VehicleThief_Allowed",
+      "original_bytes": "8b178d442414",
+      "emitted_entries": [
+        [
+          6,
+          "_InfantryClass_Per_Cell_Process_VehicleThief_Allowed_0x004D32E4_LogStub"
+        ],
+        [
+          6,
+          "_InfantryClass_Per_Cell_Process_VehicleThief_Allowed"
+        ]
+      ],
+      "instructions": [
+        "mov edx, dword ptr [edi]",
+        "lea eax, [esp + 0x14]"
+      ],
+      "register_contract": "ESI=infantry; EDI=destination after Is_Techno and Considered_Vehicle. Before cell-entry trigger.",
+      "rejected_continuation": "0x004D3435",
+      "continuation_instructions": [
+        "mov ecx, dword ptr [esp + 0x10]",
+        "call 0x452160",
+        "mov edi, eax",
+        "test edi, edi"
+      ]
+    },
+    {
+      "address": "0x004D83E3",
+      "size": 6,
+      "name": "_InfantryClass_Theft_AI_VehicleThief_Allowed",
+      "original_bytes": "8b078d4c241c",
+      "emitted_entries": [
+        [
+          6,
+          "_InfantryClass_Theft_AI_VehicleThief_Allowed_0x004D83E3_LogStub"
+        ],
+        [
+          6,
+          "_InfantryClass_Theft_AI_VehicleThief_Allowed"
+        ]
+      ],
+      "instructions": [
+        "mov eax, dword ptr [edi]",
+        "lea ecx, [esp + 0x1c]"
+      ],
+      "register_contract": "ESI=infantry; EDI=UnitClass destination after IsThief, RTTI and alliance checks. Before position/chase/trigger.",
+      "rejected_continuation": "0x004D8744",
+      "continuation_instructions": [
+        "pop edi",
+        "pop esi",
+        "pop ebp",
+        "xor al, al",
+        "pop ebx",
+        "add esp, 0x30",
+        "ret ",
+        "nop ",
+        "nop ",
+        "sub esp, 0x28",
+        "push ebp"
+      ]
+    },
+    {
+      "address": "0x004D568B",
+      "size": 6,
+      "name": "_InfantryClass_Can_Enter_Cell_VehicleThief_Allowed",
+      "original_bytes": "8a8844040000",
+      "emitted_entries": [
+        [
+          6,
+          "_InfantryClass_Can_Enter_Cell_VehicleThief_Allowed_0x004D568B_LogStub"
+        ],
+        [
+          6,
+          "_InfantryClass_Can_Enter_Cell_VehicleThief_Allowed"
+        ]
+      ],
+      "instructions": [
+        "mov cl, byte ptr [eax + 0x444]"
+      ],
+      "register_contract": "ESI=destination; EBP=infantry. After VehicleThief, Considered_Vehicle and NavCom checks; before train/MOVE_OK shortcut.",
+      "rejected_continuation": "0x004D5699",
+      "continuation_instructions": [
+        "mov edx, dword ptr [esi]",
+        "mov ecx, esi",
+        "call dword ptr [edx + 0x2c]",
+        "cmp eax, 6",
+        "jne 0x4d576a"
+      ]
+    },
+    {
+      "address": "0x004D6E60",
+      "size": 6,
+      "name": "_InfantryClass_Greatest_Threat_VehicleThief_Allowed",
+      "original_bytes": "8b8678020000",
+      "emitted_entries": [
+        [
+          6,
+          "_InfantryClass_Greatest_Threat_VehicleThief_Allowed_0x004D6E60_LogStub"
+        ],
+        [
+          6,
+          "_InfantryClass_Greatest_Threat_VehicleThief_Allowed"
+        ]
+      ],
+      "instructions": [
+        "mov eax, dword ptr [esi + 0x278]"
+      ],
+      "register_contract": "ESI=infantry. After VehicleThief, considered-vehicle, train and distance checks; before NavCom return.",
+      "rejected_continuation": "0x004D6E6E",
+      "continuation_instructions": [
+        "mov edx, dword ptr [esi]",
+        "mov ecx, esi",
+        "call dword ptr [edx + 0x248]",
+        "test al, al",
+        "jne 0x4d6ead"
+      ]
+    },
+    {
+      "address": "0x004D7267",
+      "size": 0,
+      "name": "_InfantryClass_What_Action_Prevent_Hijacking_Allied_Vehicles",
+      "original_bytes": "8b86ec000000",
+      "emitted_entries": [
+        [
+          0,
+          "_InfantryClass_What_Action_Prevent_Hijacking_Allied_Vehicles_0x004D7267_LogStub"
+        ],
+        [
+          0,
+          "_InfantryClass_What_Action_Prevent_Hijacking_Allied_Vehicles"
+        ]
+      ],
+      "instructions": [
+        "mov eax, dword ptr [esi + 0xec]"
+      ],
+      "register_contract": "Existing hook extended in place. ESI=target; EDI=infantry. Existing train/classification checks remain before this hook.",
+      "rejected_continuation": "0x004D72B7",
+      "continuation_instructions": [
+        "mov edx, dword ptr [esi]",
+        "mov ecx, esi",
+        "call dword ptr [edx + 0x2c]",
+        "cmp eax, 6",
+        "jne 0x4d731a"
+      ]
+    }
+  ],
+  "scope": "Static x86 instruction-boundary, executable-byte, single hook metadata, and actual DLL/PDB GUID+age checks. Does not establish runtime injection or gameplay."
+}

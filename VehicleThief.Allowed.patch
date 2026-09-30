@@ -1,0 +1,312 @@
+diff --git a/CREDITS.md b/CREDITS.md
+index 012e3bb2..2ad4c3de 100644
+--- a/CREDITS.md
++++ b/CREDITS.md
+@@ -163,6 +163,9 @@ This page lists all the individual contributions to the project by their author.
+   - Author of the default `EVA.INI` shipped alongside Vinifera.
+ - **E1 Elite**:
+   - Transcribed the in-game speeches used for the subtitles in the default `EVA.INI`.
++- **equalchance**:
++  - Implement `VehicleThief.Allowed` with AI assistance, following a TI developer's request and Vinifera request #634. Native gameplay acceptance is recorded separately in the contribution test kit.
++
+ - **hacklex**:
+   - Add Veterancy and Health Filter hotkeys.
+ - **JoyfulShush**:
+diff --git a/docs/New-Features-and-Enhancements.md b/docs/New-Features-and-Enhancements.md
+index c93802be..6e7ca211 100644
+--- a/docs/New-Features-and-Enhancements.md
++++ b/docs/New-Features-and-Enhancements.md
+@@ -686,6 +686,46 @@ Vanilla actions are always present implicitly, but their properties **can** be o
+ 
+ ## Technos
+ 
++### Vehicle Theft Permission
++
++`VehicleThief.Allowed` controls whether infantry can steal a VehicleType or
++AircraftType. It is a boolean in the target type's `RULES.INI` section and defaults
++to `yes`. Setting it to `no` blocks both `VehicleThief=yes` capture orders and the
++separate `Thief=yes` proximity theft routine, wherever those routines already
++support the target.
++
++```ini
++[SOMEVEHICLE] ; VehicleType, or an AircraftType section
++VehicleThief.Allowed=yes
++```
++
++This is an additional restriction. Missing or `yes` preserves existing theft
++behavior; it does not bypass `NonVehicle`, train restrictions, alliance checks,
++harvester truce, or the requirement that aircraft be on the ground. `Thief=yes`
++alone still cannot steal aircraft. Ordinary attacks, transport boarding, and
++building infiltration are not controlled by this flag.
++
++The stock `Thief` proximity routine has fewer eligibility checks than the
++`VehicleThief` capture-order path, including no `NonVehicle` check. Missing or
++`yes` preserves those differences. `no` vetoes either routine without changing
++their other checks.
++
++To make a drone count as a vehicle while keeping it immune to theft:
++
++```ini
++[ExampleDrone]
++NonVehicle=no
++VehicleThief.Allowed=no
++```
++
++The drone can then use normal vehicle repair and carryall rules. Those actions
++still depend on its configuration, the repair weapon, and normal game conditions.
++Keeping `NonVehicle=yes` keeps that tag's existing side effects. This feature does
++not change `TiberiumHeal`, `SelfHealing`, or veteran abilities.
++
++The setting is saved with type data and applies to orders restored from a save.
++Saves from before this serialized layout change are incompatible.
++
+ ### Spawners
+ 
+ - Vinifera ports the spawn manager, responsible for AircraftType missiles and aircraft carriers from Red Alert 2.
+diff --git a/docs/Whats-New.md b/docs/Whats-New.md
+index 1cdbb19d..dc76e08d 100644
+--- a/docs/Whats-New.md
++++ b/docs/Whats-New.md
+@@ -14,6 +14,7 @@ This page lists the history of changes across stable Vinifera releases and also
+ 
+ ### When updating Vinifera
+ 
++- `VehicleThief.Allowed` defaults to `yes`, so existing rules need no migration. To replace `NonVehicle` as a drone's theft restriction, set `NonVehicle=no` and `VehicleThief.Allowed=no`; repair and carryall eligibility still follows normal rules. This addition changes serialized type data and rejects saves made with the previous layout.
+ - Saved games are not compatible between Vinifera versions. Saves created with 0.1.0.0 will not load in 1.0.0.0.
+ - Vinifera now includes its own multiplayer spawner, which supersedes the ts-patches spawner. See the [spawner section](Miscellaneous.md#spawner) for how it is configured through `SPAWN.INI`.
+ - Campaign difficulty is no longer applied to AI houses from `SUN.INI` when reading a campaign scenario. Both human and AI difficulty now come from the settings the campaign run was started with.
+@@ -58,6 +59,7 @@ This page lists the history of changes across stable Vinifera releases and also
+ :::{dropdown} Click to show
+ 
+ New:
++- Add `VehicleThief.Allowed` for vehicles and aircraft, blocking infantry theft independently of normal vehicle classification (by equalchance, with AI assistance; requested by a TI developer).
+ - Screenshots now display an on-screen confirmation with the saved filename, or an error message if the screenshot could not be written (by ZivDero)
+ - Introduce -4 as a possible argument meaning "any human player" for the "Entered By" event (by Rampastring)
+ - Add support for loading OwnerDraw (Options Menu) graphics from side-specific MIX files (by Rampastring)
+diff --git a/src/extensions/extension.cpp b/src/extensions/extension.cpp
+index 7c2fd970..9e91a53f 100644
+--- a/src/extensions/extension.cpp
++++ b/src/extensions/extension.cpp
+@@ -2016,7 +2016,8 @@ void Extension::Print_CRCs(FILE *fp, EventClass *ev)
+  */
+ unsigned Extension::Get_Save_Version_Number()
+ {
+-    unsigned version = 0x100000;
++    // VehicleThief.Allowed changes serialized TechnoType and derived type layouts.
++    unsigned version = 0x100001;
+ 
+     /**
+      *  For debug builds, offset the save file version.
+diff --git a/src/extensions/infantry/infantryext_hooks.cpp b/src/extensions/infantry/infantryext_hooks.cpp
+index de0bc06b..dbed7383 100644
+--- a/src/extensions/infantry/infantryext_hooks.cpp
++++ b/src/extensions/infantry/infantryext_hooks.cpp
+@@ -638,7 +638,7 @@ DEFINE_HOOK(0x004D8BE4, _InfantryClass_Doing_AI_Fix_Invalid_Facing_Set, 0)
+ 
+ 
+ /**
+- *  Fixes an exploit where hijackers are able to hijack vehicles of their allies.
++ *  Prevents allied vehicle hijacking and respects the target type's theft veto.
+  *
+  *  Author: Rampastring
+  */
+@@ -647,8 +647,9 @@ DEFINE_HOOK(0x004D7267, _InfantryClass_What_Action_Prevent_Hijacking_Allied_Vehi
+     GET(TechnoClass*, target, ESI);
+     GET(InfantryClass*, this_ptr, EDI);
+ 
+-    if (this_ptr->House->Is_Ally(target)) {
+-        // The target is allied to the hijacker. Move on.
++    if (this_ptr->House->Is_Ally(target)
++        || !TechnoTypeClassExtension::Is_Vehicle_Theft_Allowed(target)) {
++        // Continue with normal actions, including passenger boarding.
+         return 0x004D72B7;
+     }
+ 
+@@ -657,6 +658,94 @@ DEFINE_HOOK(0x004D7267, _InfantryClass_What_Action_Prevent_Hijacking_Allied_Vehi
+ }
+ 
+ 
++/**
++ *  Stop a rejected theft order without consuming the infantry or changing the
++ *  target. Keep unrelated attack targets intact.
++ */
++static void Cancel_Vehicle_Theft(InfantryClass* infantry, TechnoClass* target)
++{
++    if (infantry->TarCom == target) {
++        infantry->Assign_Target(nullptr);
++    }
++    infantry->Assign_Destination(nullptr);
++    infantry->Stop_Driver();
++    infantry->Assign_Mission(MISSION_GUARD);
++}
++
++
++/**
++ *  Per_Cell_Process: ESI is the infantry, EDI is its checked vehicle destination.
++ *  Veto before TEVENT_PLAYER_ENTERED, Detach_All, Captured, or Delete_Me.
++ *  The six displaced bytes only set up the following cell-coordinate call.
++ */
++DEFINE_HOOK(0x004D32E4, _InfantryClass_Per_Cell_Process_VehicleThief_Allowed, 6)
++{
++    GET(InfantryClass*, infantry, ESI);
++    GET(TechnoClass*, target, EDI);
++
++    if ((infantry->Class->IsVehicleThief || infantry->Class->IsThief)
++        && !TechnoTypeClassExtension::Is_Vehicle_Theft_Allowed(target)) {
++        Cancel_Vehicle_Theft(infantry, target);
++        return 0x004D3435; // Continue with the normal building checks.
++    }
++
++    return 0;
++}
++
++
++/**
++ *  Theft_AI: ESI is the Thief infantry, EDI its non-allied UnitClass destination.
++ *  This path is separate from VehicleThief capture missions and cannot steal
++ *  aircraft. Reject before chasing, triggers, radio messages, or capture.
++ */
++DEFINE_HOOK(0x004D83E3, _InfantryClass_Theft_AI_VehicleThief_Allowed, 6)
++{
++    GET(InfantryClass*, infantry, ESI);
++    GET(TechnoClass*, target, EDI);
++
++    if (!TechnoTypeClassExtension::Is_Vehicle_Theft_Allowed(target)) {
++        Cancel_Vehicle_Theft(infantry, target);
++        return 0x004D8744; // Existing false-return epilogue.
++    }
++
++    return 0;
++}
++
++
++/**
++ *  Can_Enter_Cell: ESI is a VehicleThief's considered-vehicle destination.
++ *  Do not grant the special MOVE_OK shortcut for a forbidden theft. Continue
++ *  with stock collision/radio handling, preserving normal transport boarding.
++ */
++DEFINE_HOOK(0x004D568B, _InfantryClass_Can_Enter_Cell_VehicleThief_Allowed, 6)
++{
++    GET(TechnoClass*, target, ESI);
++
++    if (!TechnoTypeClassExtension::Is_Vehicle_Theft_Allowed(target)) {
++        return 0x004D5699;
++    }
++
++    return 0;
++}
++
++
++/**
++ *  Greatest_Threat: the stock VehicleThief shortcut is about to return NavCom.
++ *  A forbidden destination must fall through to ordinary target evaluation.
++ */
++DEFINE_HOOK(0x004D6E60, _InfantryClass_Greatest_Threat_VehicleThief_Allowed, 6)
++{
++    GET(InfantryClass*, infantry, ESI);
++
++    if (!TechnoTypeClassExtension::Is_Vehicle_Theft_Allowed(
++            static_cast<TechnoClass const*>(infantry->NavCom))) {
++        return 0x004D6E6E;
++    }
++
++    return 0;
++}
++
++
+ /**
+  *  Patches InfantryClass::What_Action when the target object is an armory.
+  *  No longer transmits a message to the armory requesting it to establish radio connection (which only allows one unit at a time).
+diff --git a/src/extensions/techno/technoext_hooks.cpp b/src/extensions/techno/technoext_hooks.cpp
+index b8827636..d470749b 100644
+--- a/src/extensions/techno/technoext_hooks.cpp
++++ b/src/extensions/techno/technoext_hooks.cpp
+@@ -3210,6 +3210,16 @@ bool TechnoClassExt::_Evaluate_Object(ThreatType method, int mask, int range, Te
+         return false;
+     }
+ 
++    // Weaponless thieves scan for theft targets. An armed thief's ordinary attacks
++    // must still be able to target vehicles that cannot be stolen.
++    if (RTTI == RTTI_INFANTRY && !Is_Weapon_Equipped()) {
++        const auto infantry = reinterpret_cast<InfantryClass const*>(this);
++        if ((infantry->Class->IsVehicleThief || infantry->Class->IsThief)
++            && !TechnoTypeClassExtension::Is_Vehicle_Theft_Allowed(object)) {
++            return false;
++        }
++    }
++
+     /*
+     **  Never consider a spy to be a valid target, unless you're a dog
+     */
+diff --git a/src/extensions/technotype/technotypeext.cpp b/src/extensions/technotype/technotypeext.cpp
+index 9761b5a5..b8bbba0b 100644
+--- a/src/extensions/technotype/technotypeext.cpp
++++ b/src/extensions/technotype/technotypeext.cpp
+@@ -111,7 +111,8 @@ TechnoTypeClassExtension::TechnoTypeClassExtension(const TechnoTypeClass *this_p
+     AbandonTargetEscortRange(-1),
+     ScrapExplosion(),
+     VeteranSightRange(-1),
+-    EliteSightRange(-1)
++    EliteSightRange(-1),
++    IsVehicleThiefAllowed(true)
+ {
+ }
+ 
+@@ -295,6 +296,7 @@ void TechnoTypeClassExtension::Object_CRC(CRCEngine &crc) const
+     crc(AbandonTargetEscortRange);
+     crc(VeteranSightRange);
+     crc(EliteSightRange);
++    crc(IsVehicleThiefAllowed);
+ }
+ 
+ 
+@@ -361,6 +363,7 @@ bool TechnoTypeClassExtension::Read_INI(CCINIClass &ini)
+     IsImmuneToEMP = ini.Get_Bool(ini_name, "ImmuneToEMP", IsImmuneToEMP);
+     IsCanPassiveAcquire = ini.Get_Bool(ini_name, "CanPassiveAcquire", IsCanPassiveAcquire);
+     IsCanRetaliate = ini.Get_Bool(ini_name, "CanRetaliate", IsCanRetaliate);
++    IsVehicleThiefAllowed = ini.Get_Bool(ini_name, "VehicleThief.Allowed", IsVehicleThiefAllowed);
+     IsLegalTargetComputer = ini.Get_Bool(ini_name, "AILegalTarget", IsLegalTargetComputer);
+     ShakePixelYHi = ini.Get_Int(ini_name, "ShakeYhi", ShakePixelYHi);
+     ShakePixelYLo = ini.Get_Int(ini_name, "ShakeYlo", ShakePixelYLo);
+@@ -567,6 +570,16 @@ int TechnoTypeClassExtension::Get_Jumpjet_Wobble_Deviation() const
+ }
+ 
+ 
++bool TechnoTypeClassExtension::Is_Vehicle_Theft_Allowed(const TechnoClass* target)
++{
++    if (target == nullptr || (target->RTTI != RTTI_UNIT && target->RTTI != RTTI_AIRCRAFT)) {
++        return true;
++    }
++
++    return Extension::Fetch(target->TClass)->IsVehicleThiefAllowed;
++}
++
++
+ int TechnoTypeClassExtension::Get_Jumpjet_Cloak_Detection_Radius() const {
+     if (_JumpjetCloakDetectionRadius != std::numeric_limits<int>::min()) {
+         return _JumpjetCloakDetectionRadius;
+diff --git a/src/extensions/technotype/technotypeext.h b/src/extensions/technotype/technotypeext.h
+index 1c84b7e2..b5823eea 100644
+--- a/src/extensions/technotype/technotypeext.h
++++ b/src/extensions/technotype/technotypeext.h
+@@ -49,6 +49,9 @@ public:
+     static ProductionFlags Get_Production_Flags(const TechnoTypeClass* ttype) { return Get_Production_Flags(Extension::Fetch(ttype)); }
+     static ProductionFlags Get_Production_Flags(const TechnoTypeClassExtension* ttype_ext);
+ 
++    // This veto applies only to vehicles and aircraft, not to building infiltration.
++    static bool Is_Vehicle_Theft_Allowed(const TechnoClass* target);
++
+ public:
+     /**
+      *  This is the sound effect to play when the unit is cloaking.
+@@ -420,4 +423,10 @@ public:
+      *  Falls back to VeteranSightRange when not provided.
+      */
+     int EliteSightRange;
++
++    /**
++     *  Can infantry steal this vehicle or aircraft? Existing theft restrictions
++     *  still apply when this is true. Does not change Considered_Vehicle().
++     */
++    bool IsVehicleThiefAllowed;
+ };
