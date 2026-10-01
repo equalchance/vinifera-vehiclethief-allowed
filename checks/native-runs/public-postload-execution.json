@@ -1,0 +1,334 @@
+{
+  "status": "PASS_NATIVE_EXECUTION_PROBE",
+  "mode": "execution",
+  "binary": "public",
+  "postload": true,
+  "cases": [
+    {
+      "id": "FIXTURE",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "fixture objects present",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "AUTOMATIC_TARGET",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "automatic target shortcut keeps permitted destination",
+          "passed": true
+        },
+        {
+          "name": "automatic target shortcut excludes forbidden destination",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "QUEUED_ORDER",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "native navigation queue accepts permitted destination",
+          "passed": true
+        },
+        {
+          "name": "native navigation queue contains forbidden order",
+          "passed": true
+        },
+        {
+          "name": "native navigation queue restores forbidden destination",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order leaves ownership unchanged",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order leaves infantry active",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order clears destination and target",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order emits no entry event",
+          "passed": true
+        },
+        {
+          "name": "native navigation queue accepts permitted destination",
+          "passed": true
+        },
+        {
+          "name": "native navigation queue contains forbidden order",
+          "passed": true
+        },
+        {
+          "name": "native navigation queue restores forbidden destination",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order leaves ownership unchanged",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order leaves infantry active",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order clears destination and target",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order emits no entry event",
+          "passed": true
+        },
+        {
+          "name": "native navigation queue accepts permitted destination",
+          "passed": true
+        },
+        {
+          "name": "native navigation queue contains forbidden order",
+          "passed": true
+        },
+        {
+          "name": "native navigation queue restores forbidden destination",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order leaves ownership unchanged",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order leaves infantry active",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order clears destination and target",
+          "passed": true
+        },
+        {
+          "name": "queued forbidden order emits no entry event",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "FORCED_CAPTURE_VEHICLE_NO",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "forced capture: infantry remains active in native array",
+          "passed": true
+        },
+        {
+          "name": "forced capture: owner unchanged",
+          "passed": true
+        },
+        {
+          "name": "forced capture: entry event absent",
+          "passed": true
+        },
+        {
+          "name": "forced capture: destination cleared",
+          "passed": true
+        },
+        {
+          "name": "forced capture: attack target cleared",
+          "passed": true
+        },
+        {
+          "name": "forced capture: infantry remains active in native array",
+          "passed": true
+        },
+        {
+          "name": "forced capture: owner unchanged",
+          "passed": true
+        },
+        {
+          "name": "forced capture: entry event absent",
+          "passed": true
+        },
+        {
+          "name": "forced capture: destination cleared",
+          "passed": true
+        },
+        {
+          "name": "forced capture: attack target cleared",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "FORCED_CAPTURE_AIRCRAFT_NO",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "forced capture: infantry remains active in native array",
+          "passed": true
+        },
+        {
+          "name": "forced capture: owner unchanged",
+          "passed": true
+        },
+        {
+          "name": "forced capture: entry event absent",
+          "passed": true
+        },
+        {
+          "name": "forced capture: destination cleared",
+          "passed": true
+        },
+        {
+          "name": "forced capture: attack target cleared",
+          "passed": true
+        },
+        {
+          "name": "forced capture: infantry remains active in native array",
+          "passed": true
+        },
+        {
+          "name": "forced capture: owner unchanged",
+          "passed": true
+        },
+        {
+          "name": "forced capture: entry event absent",
+          "passed": true
+        },
+        {
+          "name": "forced capture: destination cleared",
+          "passed": true
+        },
+        {
+          "name": "forced capture: attack target cleared",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "THIEF_PROXIMITY",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "Thief-only forbidden route returns false",
+          "passed": true
+        },
+        {
+          "name": "Thief-only forbidden infantry remains",
+          "passed": true
+        },
+        {
+          "name": "Thief-only forbidden owner unchanged",
+          "passed": true
+        },
+        {
+          "name": "Thief-only forbidden entry event absent",
+          "passed": true
+        },
+        {
+          "name": "Thief-only forbidden destination cleared",
+          "passed": true
+        },
+        {
+          "name": "Thief-only aircraft returns false",
+          "passed": true
+        },
+        {
+          "name": "Thief-only aircraft owner unchanged",
+          "passed": true
+        },
+        {
+          "name": "Thief-only aircraft infantry remains",
+          "passed": true
+        },
+        {
+          "name": "Thief-only allowed route completes",
+          "passed": true
+        },
+        {
+          "name": "Thief-only allowed ownership transfers",
+          "passed": true
+        },
+        {
+          "name": "Thief-only allowed infantry consumed",
+          "passed": true
+        },
+        {
+          "name": "Thief-only allowed entry event positive control",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "FORCED_CAPTURE_ALLOWED",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "allowed forced capture target present",
+          "passed": true
+        },
+        {
+          "name": "allowed forced capture transfers ownership",
+          "passed": true
+        },
+        {
+          "name": "allowed forced capture consumes infantry",
+          "passed": true
+        },
+        {
+          "name": "allowed forced capture emits entry event",
+          "passed": true
+        },
+        {
+          "name": "allowed forced capture target present",
+          "passed": true
+        },
+        {
+          "name": "allowed forced capture transfers ownership",
+          "passed": true
+        },
+        {
+          "name": "allowed forced capture consumes infantry",
+          "passed": true
+        },
+        {
+          "name": "allowed forced capture emits entry event",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "checks": 64,
+    "failures": 0,
+    "entry_events": 6
+  },
+  "required_case_ids": [
+    "AUTOMATIC_TARGET",
+    "FIXTURE",
+    "FORCED_CAPTURE_AIRCRAFT_NO",
+    "FORCED_CAPTURE_ALLOWED",
+    "FORCED_CAPTURE_VEHICLE_NO",
+    "QUEUED_ORDER",
+    "THIEF_PROXIMITY"
+  ],
+  "required_minimum_checks": 64,
+  "exit_code": 0,
+  "game_sha256": "1956ba3883b8a78d3bba338e2b04e75002d78a8c7f21cfc1e77708e5690f7e7e",
+  "feature_dll_sha256": "fb3b49449630de2234c173dc7e39271af43439eaf14d6c52e3e8db24fd7269d3",
+  "feature_pdb_sha256": "55592cb91f5945254081512ea0c24a914afcfac77a651a2027795aef1d35c7c2",
+  "instrumentation_sha256": "7ebf3eea07305c7493cf3ebe9b9f0a0d9e60f0efcd29f4a5285dd71113ae7ea5",
+  "probe_source_sha256": "da05c3759e865ed0072ba7d931f5aaad6b43125d25567906a6f29ff5f92289a0",
+  "regression_header_sha256": "d81ee6b00ec7634e469e485dd32b3fa707e3f1520f8e1d2cf7c27b10a3e258cd",
+  "original_launcher_sha256": "b63671fb0ff4b14f68528710294bd9bca771cd47c6596d394dd2e56dbf1f0334",
+  "instrumented_launcher_sha256": "7de869685f7b3d9b2d9daee24e8a2072c6b8c90a85228638e5275ca9dee87b16",
+  "launcher_source_commit": "d9f4870cc7dea6bb79cb963c2339a3fff7a39071",
+  "launcher_change": "Official standalone SyringeEx built from source, with explicit Vinifera.dll and NativeProbe.dll injection arguments; the feature DLL is unchanged.",
+  "map_sha256": "883055dd6ae3ea836dda6e30180c84e419071796b0f1b84cf8e707e490a72d44",
+  "scope": "Actual native engine functions on the main thread. Execution mode exercises both theft paths, native navigation queue and existing-destination threat shortcut, with artificial coordinates for positive capture controls. Save/load modes use a real native save and a cold process. These checks do not prove normal pathfinding, visual presentation or multiplayer. Instrumentation and the UI-only briefing skip stay isolated and are excluded from all public game packages."
+}

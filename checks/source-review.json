@@ -23,13 +23,14 @@
     "src/extensions/technotype/technotypeext.h": "ebba19fd94578a3245d85f55b666b7a734937b0b4cd4b917cf5a190cd3146c9a"
   },
   "report": "docs/TESTING.md",
-  "unverified_native": [
-    "forced capture execution",
-    "Thief-only proximity",
-    "automatic acquisition",
-    "queued orders",
-    "restored forbidden destinations"
-  ],
   "ti_private_build": "PENDING",
-  "submitted_upstream": false
+  "remaining_native": [
+    "Multi-frame autonomous AI pursuit through final capture",
+    "Normal locomotor flight through the airborne matrix",
+    "Actual allowed deployment transformation",
+    "Detailed concurrent/queued multiplayer instrumentation",
+    "Private TI build acceptance"
+  ],
+  "native_acceptance_summary": "checks/native-acceptance-summary.json",
+  "scope": "Source review only. Later native execution results and their limits are recorded separately."
 }

@@ -1,0 +1,399 @@
+{
+  "status": "PASS_NATIVE_EXECUTION_PROBE",
+  "mode": "regressions",
+  "binary": "public",
+  "postload": true,
+  "cases": [
+    {
+      "id": "REGRESSION_SETUP",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "regression objects present",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "N08",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "aircraft matrix fixture exists",
+          "passed": true
+        },
+        {
+          "name": "landed aircraft classified as vehicle",
+          "passed": true
+        },
+        {
+          "name": "landed aircraft action matches permission",
+          "passed": true
+        },
+        {
+          "name": "airborne aircraft excluded by native classification",
+          "passed": true
+        },
+        {
+          "name": "airborne aircraft capture action rejected",
+          "passed": true
+        },
+        {
+          "name": "airborne forced order preserves owner and infantry",
+          "passed": true
+        },
+        {
+          "name": "airborne forced order fires no entry event",
+          "passed": true
+        },
+        {
+          "name": "aircraft matrix fixture exists",
+          "passed": true
+        },
+        {
+          "name": "landed aircraft classified as vehicle",
+          "passed": true
+        },
+        {
+          "name": "landed aircraft action matches permission",
+          "passed": true
+        },
+        {
+          "name": "airborne aircraft excluded by native classification",
+          "passed": true
+        },
+        {
+          "name": "airborne aircraft capture action rejected",
+          "passed": true
+        },
+        {
+          "name": "airborne forced order preserves owner and infantry",
+          "passed": true
+        },
+        {
+          "name": "airborne forced order fires no entry event",
+          "passed": true
+        },
+        {
+          "name": "aircraft matrix fixture exists",
+          "passed": true
+        },
+        {
+          "name": "landed aircraft classified as vehicle",
+          "passed": true
+        },
+        {
+          "name": "landed aircraft action matches permission",
+          "passed": true
+        },
+        {
+          "name": "airborne aircraft excluded by native classification",
+          "passed": true
+        },
+        {
+          "name": "airborne aircraft capture action rejected",
+          "passed": true
+        },
+        {
+          "name": "airborne forced order preserves owner and infantry",
+          "passed": true
+        },
+        {
+          "name": "airborne forced order fires no entry event",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "N10",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "legacy NonVehicle configured",
+          "passed": true
+        },
+        {
+          "name": "legacy unit not considered vehicle",
+          "passed": true
+        },
+        {
+          "name": "legacy VehicleThief capture action unavailable",
+          "passed": true
+        },
+        {
+          "name": "legacy forced capture preserves owner and infantry",
+          "passed": true
+        },
+        {
+          "name": "legacy forced capture does not enter",
+          "passed": true
+        },
+        {
+          "name": "removing legacy classification permits VehicleThief action",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "N18",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "train flag configured",
+          "passed": true
+        },
+        {
+          "name": "train VehicleThief action rejected",
+          "passed": true
+        },
+        {
+          "name": "non-train positive action control",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "N17",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "own vehicle cannot be hijacked",
+          "passed": true
+        },
+        {
+          "name": "alliance control uses distinct houses",
+          "passed": true
+        },
+        {
+          "name": "distinct allied vehicle cannot be hijacked",
+          "passed": true
+        },
+        {
+          "name": "restoring hostile alliance restores capture action",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "N19",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "scenario exists",
+          "passed": true
+        },
+        {
+          "name": "harvester action allowed without truce",
+          "passed": true
+        },
+        {
+          "name": "harvester action forbidden with truce",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "N06_SCAN",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "automatic acquisition fixture objects exist",
+          "passed": true
+        },
+        {
+          "name": "unarmed theft scan accepts allowed vehicle",
+          "passed": true
+        },
+        {
+          "name": "unarmed theft scan permission matches build",
+          "passed": true
+        },
+        {
+          "name": "unarmed theft scan accepts allowed vehicle",
+          "passed": true
+        },
+        {
+          "name": "unarmed theft scan permission matches build",
+          "passed": true
+        },
+        {
+          "name": "unarmed theft scan accepts allowed vehicle",
+          "passed": true
+        },
+        {
+          "name": "unarmed theft scan permission matches build",
+          "passed": true
+        },
+        {
+          "name": "armed infantry ordinary attack scan accepts forbidden vehicle",
+          "passed": true
+        },
+        {
+          "name": "automatic scan accepts harvester without truce",
+          "passed": true
+        },
+        {
+          "name": "automatic scan rejects harvester with truce",
+          "passed": true
+        },
+        {
+          "name": "automatic VehicleThief scan selects a legal candidate",
+          "passed": true
+        },
+        {
+          "name": "automatic VehicleThief scan refuses sole forbidden candidate",
+          "passed": true
+        },
+        {
+          "name": "Thief-only retains stock lack of automatic acquisition",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "N20",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "limited deployable fixture configured",
+          "passed": true
+        },
+        {
+          "name": "unhijacked limited vehicle can deploy",
+          "passed": true
+        },
+        {
+          "name": "limited allowed vehicle captured",
+          "passed": true
+        },
+        {
+          "name": "limited capture consumes infantry",
+          "passed": true
+        },
+        {
+          "name": "limited capture entry positive control",
+          "passed": true
+        },
+        {
+          "name": "hijacker type recorded",
+          "passed": true
+        },
+        {
+          "name": "hijacked build-limited vehicle deployment rejected",
+          "passed": true
+        },
+        {
+          "name": "deployment click has one selected native vehicle",
+          "passed": true
+        },
+        {
+          "name": "hijacked build-limited vehicle rejects player self action",
+          "passed": true
+        },
+        {
+          "name": "hijacked build-limited deployment click emits no unload mission",
+          "passed": true
+        },
+        {
+          "name": "unlimited deployment positive control",
+          "passed": true
+        },
+        {
+          "name": "unlimited vehicle player self action positive control",
+          "passed": true
+        },
+        {
+          "name": "unlimited deployment click submits native unload mission",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "N10_THIEF",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "Thief legacy proximity capture completes",
+          "passed": true
+        },
+        {
+          "name": "Thief legacy owner transfers",
+          "passed": true
+        },
+        {
+          "name": "Thief legacy infantry consumed",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "N16",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "infiltrator agent and theft flags configured",
+          "passed": true
+        },
+        {
+          "name": "building type extension exists",
+          "passed": true
+        },
+        {
+          "name": "building permission no loaded from INI",
+          "passed": true
+        },
+        {
+          "name": "building infiltration action retained",
+          "passed": true
+        },
+        {
+          "name": "spy enters a native occupied building cell",
+          "passed": true
+        },
+        {
+          "name": "infiltration spy consumed",
+          "passed": true
+        },
+        {
+          "name": "infiltration building owner unchanged",
+          "passed": true
+        },
+        {
+          "name": "infiltration updates native SpiedBy for the infiltrating house",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "checks": 75,
+    "failures": 0,
+    "entry_events": 2
+  },
+  "required_case_ids": [
+    "N06_SCAN",
+    "N08",
+    "N10",
+    "N10_THIEF",
+    "N16",
+    "N17",
+    "N18",
+    "N19",
+    "N20",
+    "REGRESSION_SETUP"
+  ],
+  "required_minimum_checks": 75,
+  "exit_code": 0,
+  "game_sha256": "1956ba3883b8a78d3bba338e2b04e75002d78a8c7f21cfc1e77708e5690f7e7e",
+  "feature_dll_sha256": "fb3b49449630de2234c173dc7e39271af43439eaf14d6c52e3e8db24fd7269d3",
+  "feature_pdb_sha256": "55592cb91f5945254081512ea0c24a914afcfac77a651a2027795aef1d35c7c2",
+  "instrumentation_sha256": "44e638ad412c69dfd6896d53700f31b83f04f16160fa6f057ac5d6790fe6cd58",
+  "probe_source_sha256": "da05c3759e865ed0072ba7d931f5aaad6b43125d25567906a6f29ff5f92289a0",
+  "regression_header_sha256": "d81ee6b00ec7634e469e485dd32b3fa707e3f1520f8e1d2cf7c27b10a3e258cd",
+  "original_launcher_sha256": "b63671fb0ff4b14f68528710294bd9bca771cd47c6596d394dd2e56dbf1f0334",
+  "instrumented_launcher_sha256": "7de869685f7b3d9b2d9daee24e8a2072c6b8c90a85228638e5275ca9dee87b16",
+  "launcher_source_commit": "d9f4870cc7dea6bb79cb963c2339a3fff7a39071",
+  "launcher_change": "Official standalone SyringeEx built from source, with explicit Vinifera.dll and NativeProbe.dll injection arguments; the feature DLL is unchanged.",
+  "map_sha256": "883055dd6ae3ea836dda6e30180c84e419071796b0f1b84cf8e707e490a72d44",
+  "scope": "Actual native engine functions on the main thread. Execution mode exercises both theft paths, native navigation queue and existing-destination threat shortcut, with artificial coordinates for positive capture controls. Save/load modes use a real native save and a cold process. These checks do not prove normal pathfinding, visual presentation or multiplayer. Instrumentation and the UI-only briefing skip stay isolated and are excluded from all public game packages."
+}

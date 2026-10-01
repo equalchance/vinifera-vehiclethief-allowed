@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "game_sha256": "1956ba3883b8a78d3bba338e2b04e75002d78a8c7f21cfc1e77708e5690f7e7e",
+  "hooks": [
+    {
+      "address": "0x00508A40",
+      "bytes": "a080457e00",
+      "role": "main-loop",
+      "contract": "Function entry; no stack prologue executed; original single five-byte mov al [0x7E4580].",
+      "instructions": [
+        "mov al, byte ptr [0x7e4580]"
+      ]
+    },
+    {
+      "address": "0x0061E880",
+      "bytes": "5153558be9",
+      "role": "entry-event",
+      "contract": "TagClass this pointer ECX; first stack argument offset4 is TEventType; five complete prologue bytes.",
+      "instructions": [
+        "push ecx",
+        "push ebx",
+        "push ebp",
+        "mov ebp, ecx"
+      ]
+    },
+    {
+      "address": "0x00631650",
+      "bytes": "a024b66f00",
+      "role": "deployment-order-observer",
+      "contract": "Player_Assign_Mission this pointer ECX; first stack argument offset4 is MissionType. Original five-byte mov al [0x6FB624] resumes unchanged.",
+      "instructions": [
+        "mov al, byte ptr [0x6fb624]"
+      ]
+    },
+    {
+      "address": "0x005C0230",
+      "bytes": "81ec90040000",
+      "role": "briefing-only",
+      "contract": "Function entry six-byte sub esp,0x490. Skip via saved return address stack0 and ESP+4; the pinned SyringeEx callback stub restores modified ESP.",
+      "instructions": [
+        "sub esp, 0x490"
+      ]
+    }
+  ]
+}

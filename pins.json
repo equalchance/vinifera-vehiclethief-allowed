@@ -14,7 +14,11 @@
   "cmake_options": {
     "PREVIEW": true,
     "CMAKE_EXPORT_COMPILE_COMMANDS": true,
-    "CMAKE_SHARED_LINKER_FLAGS": "/PDBSTRIPPED:../symbols/<label>.pdb"
+    "CMAKE_SHARED_LINKER_FLAGS": "/PDBSTRIPPED:../symbols/<label>.pdb",
+    "MINIAUDIO_FORCE_CXX": true,
+    "MINIAUDIO_NO_ENCODING": true,
+    "MINIAUDIO_NO_GENERATION": true,
+    "MINIAUDIO_NO_EXTRA_NODES": true
   },
   "python_audit_dependencies": {
     "capstone": "5.0.6",
@@ -31,12 +35,13 @@
     "src/extensions/technotype/technotypeext.cpp": "3c5766de8238c3a78dda9bf3a8178efef2c79dd40eec1c2a77a50cdb9dfd68f5",
     "src/extensions/technotype/technotypeext.h": "ebba19fd94578a3245d85f55b666b7a734937b0b4cd4b917cf5a190cd3146c9a"
   },
-  "native_acceptance": "PENDING",
+  "native_acceptance": "GOOD_FOR_UPSTREAM_REVIEW",
   "ti_private_build_acceptance": "PENDING",
+  "native_acceptance_summary": "checks/native-acceptance-summary.json",
   "matched_runtime": {
     "game_exe_sha256": "1956ba3883b8a78d3bba338e2b04e75002d78a8c7f21cfc1e77708e5690f7e7e",
     "launcher_sha256": "b63671fb0ff4b14f68528710294bd9bca771cd47c6596d394dd2e56dbf1f0334",
-    "feature_dll_sha256": "86d93f2caf787ef3a60f6554320e6f3ca689958e800ff1a7c66773586bc5c671",
-    "feature_pdb_sha256": "7c71485fdafd7787bbbb427a4128e0c48daf474b5d1425a1c65d68bec9214f32"
+    "feature_dll_sha256": "fb3b49449630de2234c173dc7e39271af43439eaf14d6c52e3e8db24fd7269d3",
+    "feature_pdb_sha256": "55592cb91f5945254081512ea0c24a914afcfac77a651a2027795aef1d35c7c2"
   }
 }

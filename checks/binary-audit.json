@@ -10,10 +10,10 @@
       "machine": "I386"
     },
     "feature": {
-      "dll_sha256": "86d93f2caf787ef3a60f6554320e6f3ca689958e800ff1a7c66773586bc5c671",
-      "pdb_sha256": "7c71485fdafd7787bbbb427a4128e0c48daf474b5d1425a1c65d68bec9214f32",
-      "codeview_guid_bytes": "cc3c9ea0b0989b40badcc854f57021de",
-      "pdb_age": 5,
+      "dll_sha256": "fb3b49449630de2234c173dc7e39271af43439eaf14d6c52e3e8db24fd7269d3",
+      "pdb_sha256": "55592cb91f5945254081512ea0c24a914afcfac77a651a2027795aef1d35c7c2",
+      "codeview_guid_bytes": "7cf027d0294f6e4986373c8af87da043",
+      "pdb_age": 7,
       "machine": "I386"
     }
   },
@@ -166,5 +166,5 @@
       ]
     }
   ],
-  "scope": "Static x86 instruction-boundary, executable-byte, single hook metadata, and actual DLL/PDB GUID+age checks. Does not establish runtime injection or gameplay."
+  "scope": "Static x86 instruction-boundary, executable-byte, single hook metadata, and actual DLL/PDB GUID+age checks. Does not establish runtime injection or gameplay. Public feature pair additionally checked by public-binary-equivalence.json."
 }

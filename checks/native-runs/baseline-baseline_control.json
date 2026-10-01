@@ -1,0 +1,95 @@
+{
+  "status": "PASS_NATIVE_EXECUTION_PROBE",
+  "mode": "baseline_control",
+  "binary": "baseline",
+  "postload": false,
+  "cases": [
+    {
+      "id": "FIXTURE",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "fixture objects present",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "BASELINE_CONTROL",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "baseline forbidden-key target exists",
+          "passed": true
+        },
+        {
+          "name": "baseline ignores forbidden key and transfers ownership",
+          "passed": true
+        },
+        {
+          "name": "baseline allowed capture consumes infantry",
+          "passed": true
+        },
+        {
+          "name": "baseline allowed capture emits entry event",
+          "passed": true
+        },
+        {
+          "name": "baseline forbidden-key target exists",
+          "passed": true
+        },
+        {
+          "name": "baseline ignores forbidden key and transfers ownership",
+          "passed": true
+        },
+        {
+          "name": "baseline allowed capture consumes infantry",
+          "passed": true
+        },
+        {
+          "name": "baseline allowed capture emits entry event",
+          "passed": true
+        },
+        {
+          "name": "baseline forbidden-key target exists",
+          "passed": true
+        },
+        {
+          "name": "baseline ignores forbidden key and transfers ownership",
+          "passed": true
+        },
+        {
+          "name": "baseline allowed capture consumes infantry",
+          "passed": true
+        },
+        {
+          "name": "baseline allowed capture emits entry event",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "checks": 13,
+    "failures": 0,
+    "entry_events": 6
+  },
+  "required_case_ids": [
+    "BASELINE_CONTROL",
+    "FIXTURE"
+  ],
+  "required_minimum_checks": 13,
+  "exit_code": 0,
+  "game_sha256": "1956ba3883b8a78d3bba338e2b04e75002d78a8c7f21cfc1e77708e5690f7e7e",
+  "feature_dll_sha256": "c25f952cc85c2dd4328b744f8393e1f105844fb32e5a2c377c6d49ccb20452c6",
+  "feature_pdb_sha256": "b5814b69bc504c20c6feffe9c5f9d8ca91a576cbd8f46153c34c3bf58be55b3e",
+  "instrumentation_sha256": "7bd1c2bfc02eff56b52df5cd5449dab3e2f82275a0e35a3cdf56f05117034547",
+  "probe_source_sha256": "da05c3759e865ed0072ba7d931f5aaad6b43125d25567906a6f29ff5f92289a0",
+  "regression_header_sha256": "d81ee6b00ec7634e469e485dd32b3fa707e3f1520f8e1d2cf7c27b10a3e258cd",
+  "original_launcher_sha256": "b63671fb0ff4b14f68528710294bd9bca771cd47c6596d394dd2e56dbf1f0334",
+  "instrumented_launcher_sha256": "7de869685f7b3d9b2d9daee24e8a2072c6b8c90a85228638e5275ca9dee87b16",
+  "launcher_source_commit": "d9f4870cc7dea6bb79cb963c2339a3fff7a39071",
+  "launcher_change": "Official standalone SyringeEx built from source, with explicit Vinifera.dll and NativeProbe.dll injection arguments; the feature DLL is unchanged.",
+  "map_sha256": "773279255f2bfbd24d654f0b3334822f81168f7d3af75c7430dff5ed848fe974",
+  "scope": "Actual native engine functions on the main thread. Execution mode exercises both theft paths, native navigation queue and existing-destination threat shortcut, with artificial coordinates for positive capture controls. Save/load modes use a real native save and a cold process. These checks do not prove normal pathfinding, visual presentation or multiplayer. Instrumentation and the UI-only briefing skip stay isolated and are excluded from all public game packages."
+}

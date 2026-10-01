@@ -1,0 +1,112 @@
+{
+  "status": "PASS",
+  "comparison": "tested distribution DLL versus neutral-path rebuild",
+  "native_candidate_dll_sha256": "4bc39c85eac44f49e54533f999012d46014ec97acfd53050544d5eb13d69677a",
+  "tested_source_hashes_match_pins": true,
+  "public_source_content_matches_after_crlf_normalization": true,
+  "tested_distribution_sha256": "86d93f2caf787ef3a60f6554320e6f3ca689958e800ff1a7c66773586bc5c671",
+  "public_dll_sha256": "fb3b49449630de2234c173dc7e39271af43439eaf14d6c52e3e8db24fd7269d3",
+  "public_pdb_sha256": "55592cb91f5945254081512ea0c24a914afcfac77a651a2027795aef1d35c7c2",
+  "dll_pdb_guid_age_match": true,
+  "privacy_scan_ascii_utf16_pass": true,
+  "normalized_relocation_references": 124,
+  "reordered_zero_initialized_globals": [
+    {
+      "size": 20,
+      "name": "CriticalQueue",
+      "section": 3,
+      "old_offset": 210184,
+      "new_offset": 210056
+    },
+    {
+      "size": 20,
+      "name": "InterruptQueue",
+      "section": 3,
+      "old_offset": 210204,
+      "new_offset": 210076
+    },
+    {
+      "size": 20,
+      "name": "NormalQueue",
+      "section": 3,
+      "old_offset": 210224,
+      "new_offset": 210096
+    },
+    {
+      "size": 48,
+      "name": "VoxScanMutex",
+      "section": 3,
+      "old_offset": 210056,
+      "new_offset": 210116
+    },
+    {
+      "size": 8,
+      "name": "VoxScanThread",
+      "section": 3,
+      "old_offset": 210176,
+      "new_offset": 210236
+    },
+    {
+      "size": 48,
+      "name": "VoxScanThreadMutex",
+      "section": 3,
+      "old_offset": 210104,
+      "new_offset": 210164
+    },
+    {
+      "size": 24,
+      "name": "Voxs",
+      "section": 3,
+      "old_offset": 210152,
+      "new_offset": 210212
+    }
+  ],
+  "rtti_filename_hashes_changed": [
+    "AsyncReadState",
+    "MovieByteStream"
+  ],
+  "allowed_other_changes": [
+    "equal-length neutral source path prefixes",
+    "PE/debug timestamps",
+    "CodeView GUID and age"
+  ],
+  "sections": [
+    {
+      "section": ".text",
+      "normalized_bytes_identical": true,
+      "tested_sha256": "c1a44450744d6c098e87bc77754b57fc4d153c37e2bf8178234944616b2c9bfe",
+      "public_sha256": "d9fd14900dddb2a159fb36be8435d4fc81e22f339a08dd2f7ec4ae95a3d3e606"
+    },
+    {
+      "section": ".rdata",
+      "normalized_bytes_identical": true,
+      "tested_sha256": "943b2d575e0c87d0e77cffc746c89c263ca3577228a3ef154ea02c7ef9312a79",
+      "public_sha256": "3cb970d38d0b52d0275925bb96ae802ebfb96c90c7a9699aac7839fb778dc5b9"
+    },
+    {
+      "section": ".data",
+      "normalized_bytes_identical": true,
+      "tested_sha256": "defdf1be510852130a99e61f3209d8392c8a74c78de97ac2f6a10ee9f67e1cbf",
+      "public_sha256": "06d0426e2b1a17f2f507a2778810144a7d4b378a1c7f1e95094d2e59e7138ef4"
+    },
+    {
+      "section": ".syhks00",
+      "normalized_bytes_identical": true,
+      "tested_sha256": "d32e9af97ef919d752facae0ae2f8e3a2823041466ad21b6c2c9e1fc5b1b240a",
+      "public_sha256": "d32e9af97ef919d752facae0ae2f8e3a2823041466ad21b6c2c9e1fc5b1b240a"
+    },
+    {
+      "section": ".rsrc",
+      "normalized_bytes_identical": true,
+      "tested_sha256": "d1313b99c835c7c2d9f80c1328a679b6face56b776451fb4ce9ead1d4eabf06f",
+      "public_sha256": "d1313b99c835c7c2d9f80c1328a679b6face56b776451fb4ce9ead1d4eabf06f"
+    },
+    {
+      "section": ".reloc",
+      "normalized_bytes_identical": true,
+      "tested_sha256": "51ec86ccbaa280f5f33ae351727136bfc8ef3a07bd3c21da54be8f769fc0f332",
+      "public_sha256": "51ec86ccbaa280f5f33ae351727136bfc8ef3a07bd3c21da54be8f769fc0f332"
+    }
+  ],
+  "scope": "Machine instructions, initialized data, hooks, resources and relocations match after named BSS relocation and diagnostic metadata normalization. This audit does not complete outstanding native gameplay cases."
+}

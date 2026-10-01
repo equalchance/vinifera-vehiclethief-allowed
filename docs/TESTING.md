@@ -1,6 +1,35 @@
 # Test notes
 
-The in-game checks passed for:
+The controlled native checks passed 389 assertions across eight runs with zero
+failures. The public DLL stays unchanged while a separate probe calls the real
+engine on its main thread. These are repeated assertions across runs, not 389
+distinct scenarios.
+
+| Run | Assertions | Failures |
+| --- | ---: | ---: |
+| Public execution | 64 | 0 |
+| Public save | 5 | 0 |
+| Public cold load | 19 | 0 |
+| Public regressions | 75 | 0 |
+| Clean baseline regressions | 74 | 0 |
+| Clean baseline capture controls | 13 | 0 |
+| Public execution after cold load | 64 | 0 |
+| Public regressions after cold load | 75 | 0 |
+
+The probes exercise forced capture execution, Thief-only proximity theft,
+automatic candidate selection, real navigation queues, already assigned
+forbidden destinations, and capture-trigger/ownership/infantry outcomes.
+Regression checks cover controlled airborne state, legacy classification,
+harvester truce, build-limit deployment orders, and building infiltration.
+The actual player deployment click emits zero unload orders for the restricted
+unit and exactly one for the unrestricted positive control. This checks the
+order restriction, not the completed deployment transformation.
+
+`checks/native-acceptance-summary.json` gives the review gate and remaining
+limits. `checks/native-runs/` contains named checks and their input hashes.
+[NATIVE-CHECKS.md](NATIVE-CHECKS.md) explains how to rebuild and repeat the probes.
+
+Separately, normal gameplay checks were reported as passing for:
 
 - Hijacking allowed vehicles and landed aircraft, including explicit `yes`.
 - Blocking the hijack cursor on `no` vehicles and aircraft.
@@ -18,18 +47,18 @@ because it doesn't read that key. Train hijacking remains blocked in the feature
 The source review found no confirmed implementation defects. Build, C++ branch,
 hook-byte/register, type-layout, and DLL/PDB checks passed too.
 
-Still unverified: forced capture execution, Thief-only proximity theft,
-automatic acquisition, queued orders, and restored forbidden destinations.
-The detailed regression matrix also has incomplete cases for airborne aircraft,
-legacy classification, harvester truce, build-limit deployment, and infiltration.
-Cursor rejection doesn't exercise an already assigned forbidden theft order.
-No private TI build has been tested.
+Remaining limits are multi-frame autonomous AI pursuit through final capture,
+normal locomotor flight through the airborne matrix, actual allowed deployment
+transformation, detailed concurrent/queued multiplayer instrumentation, and
+private TI-build acceptance. Native aircraft checks use controlled height;
+positive capture controls use artificial coordinates. No private TI build has
+been tested.
 
 ## Try the fixture
 
 Use a separate installation with the matched executable/launcher and Vinifera
-runtime files. Build the patched source and back up the installation's DLL/PDB, then install
-the matching pair from that build.
+runtime files. Back up its DLL/PDB, then install the matching published pair
+or build the patched source. See [INSTALLING.md](INSTALLING.md).
 Restore the backups to roll back. Close the game before changing binaries.
 
 For the offline fixture, copy `test-kit/vehiclethief-offline.map` to

@@ -1,0 +1,119 @@
+{
+  "status": "PASS_NATIVE_EXECUTION_PROBE",
+  "mode": "load",
+  "binary": "public",
+  "postload": false,
+  "cases": [
+    {
+      "id": "FIXTURE",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "fixture objects present",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "RESTORED_DESTINATION",
+      "status": "PASS",
+      "checks": [
+        {
+          "name": "cold-load restores forbidden destination identity",
+          "passed": true
+        },
+        {
+          "name": "cold-load restores forbidden attack target identity",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture leaves ownership unchanged",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture leaves infantry active",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture clears destination and target",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture emits no entry trigger",
+          "passed": true
+        },
+        {
+          "name": "cold-load restores forbidden destination identity",
+          "passed": true
+        },
+        {
+          "name": "cold-load restores forbidden attack target identity",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture leaves ownership unchanged",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture leaves infantry active",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture clears destination and target",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture emits no entry trigger",
+          "passed": true
+        },
+        {
+          "name": "cold-load restores forbidden destination identity",
+          "passed": true
+        },
+        {
+          "name": "cold-load restores forbidden attack target identity",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture leaves ownership unchanged",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture leaves infantry active",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture clears destination and target",
+          "passed": true
+        },
+        {
+          "name": "restored forbidden capture emits no entry trigger",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "checks": 19,
+    "failures": 0,
+    "entry_events": 0
+  },
+  "required_case_ids": [
+    "FIXTURE",
+    "RESTORED_DESTINATION"
+  ],
+  "required_minimum_checks": 19,
+  "exit_code": 0,
+  "game_sha256": "1956ba3883b8a78d3bba338e2b04e75002d78a8c7f21cfc1e77708e5690f7e7e",
+  "feature_dll_sha256": "fb3b49449630de2234c173dc7e39271af43439eaf14d6c52e3e8db24fd7269d3",
+  "feature_pdb_sha256": "55592cb91f5945254081512ea0c24a914afcfac77a651a2027795aef1d35c7c2",
+  "instrumentation_sha256": "eb12d92871fa583ab18b34cf2f469cbfeff89e36b5769302d90379943747eef5",
+  "probe_source_sha256": "da05c3759e865ed0072ba7d931f5aaad6b43125d25567906a6f29ff5f92289a0",
+  "regression_header_sha256": "d81ee6b00ec7634e469e485dd32b3fa707e3f1520f8e1d2cf7c27b10a3e258cd",
+  "original_launcher_sha256": "b63671fb0ff4b14f68528710294bd9bca771cd47c6596d394dd2e56dbf1f0334",
+  "instrumented_launcher_sha256": "7de869685f7b3d9b2d9daee24e8a2072c6b8c90a85228638e5275ca9dee87b16",
+  "launcher_source_commit": "d9f4870cc7dea6bb79cb963c2339a3fff7a39071",
+  "launcher_change": "Official standalone SyringeEx built from source, with explicit Vinifera.dll and NativeProbe.dll injection arguments; the feature DLL is unchanged.",
+  "map_sha256": "883055dd6ae3ea836dda6e30180c84e419071796b0f1b84cf8e707e490a72d44",
+  "scope": "Actual native engine functions on the main thread. Execution mode exercises both theft paths, native navigation queue and existing-destination threat shortcut, with artificial coordinates for positive capture controls. Save/load modes use a real native save and a cold process. These checks do not prove normal pathfinding, visual presentation or multiplayer. Instrumentation and the UI-only briefing skip stay isolated and are excluded from all public game packages."
+}
