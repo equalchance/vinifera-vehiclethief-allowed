@@ -86,7 +86,3 @@ too so the helper recognizes the isolated copy. Exit the game and client, then
 use `Refresh MP saves.cmd` before reopening the client. Enable
 `CreateSavedGamesDirectory=true` in the client's definitions. The helper changes
 filenames for client discovery; it doesn't convert saves between builds.
-
-For a private TI branch, apply the source patch and build with that branch's
-matched runtime. Retest theft, drone repair, carryall, save/load, and multiplayer
-there before using it in the mod.
