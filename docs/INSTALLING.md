@@ -1,18 +1,20 @@
-# Install the test DLL
+# Install
 
-Use a separate test installation with the runtime matched in `pins.json`.
-The binary ZIP contains `Vinifera.dll` and `Vinifera.pdb`; it doesn't include
-Tiberian Sun, the launcher, or the remaining Vinifera runtime files.
-
-Close the game, back up its existing DLL and symbols, then copy both files from
-the binary ZIP beside `game.exe`. Keep the filename `Vinifera.pdb`: it matches
-the debug record embedded in the DLL. The PDB helps diagnose crashes; the game
-runs without it. Restore the backups to roll back.
-
-This build uses Vinifera's spawner and the matched no-spawner executable.
-Check the executable and launcher hashes in `pins.json` before installing.
+Use a separate test installation. The binary ZIP contains `Vinifera.dll` and
+its matching `Vinifera.pdb`; it does not contain the game or complete runtime.
+Check the executable and launcher SHA256 values in `pins.json`.
+This build uses Vinifera's spawner with the matched no-spawner executable.
 For a different branch or executable, apply the source patch and rebuild.
 
-Keep saves from other builds separate. Same-build save/load works; the changed
-save format rejects older saves without migration. Fixture setup is in
-[TESTING.md](TESTING.md). Private TI-build acceptance remains pending.
+Close the game and back up its existing DLL and symbols. Copy the supplied
+pair beside `game.exe`, keeping the PDB filename. Symbols are optional for
+playing but help diagnose crashes.
+
+The save format changes: same-build saves work; older saves are rejected
+without migration. Keep other builds' saves separate. To roll back, close the
+game and restore the backed-up binaries and their saves.
+
+To try the offline fixture, copy `test-kit/vehiclethief-offline.map` as
+`spawnmap.ini` and `test-kit/spawn-offline.ini` as `spawn.ini`, then run
+`LaunchVinifera.exe -SPAWN -CD.`. Use GDI; `test-kit/POSITIONS.svg` identifies
+the targets. The fixture uses existing stock assets.

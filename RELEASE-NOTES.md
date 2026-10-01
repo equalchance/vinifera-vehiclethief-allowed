@@ -1,16 +1,14 @@
-Put the `VehicleThief.Allowed` patch and test build here so it's easier to try.
+Adds `VehicleThief.Allowed` to vehicle and aircraft types. It defaults to `yes`;
+set it to `no` to block hijacking independently of `NonVehicle`.
 
-It defaults to `yes`. Setting it to `no` blocks hijacking without needing
-`NonVehicle=yes`, so a drone can still use normal vehicle repair and carryall
-handling.
+The theft checks and cold save/load passed. Normal gameplay and multiplayer
+checks were also reported as passing. [Test notes](https://github.com/equalchance/vinifera-vehiclethief-allowed/blob/main/docs/TESTING.md)
+list the coverage and remaining limits. Retest on the Vinifera branch you are
+porting to.
 
-The native probes passed 389 assertions across eight runs with zero failures,
-including forced theft orders and cold save/load. Normal gameplay and
-multiplayer checks were reported as passing too. Broader cases and the private
-TI build remain open; see
-[the test notes](https://github.com/equalchance/vinifera-vehiclethief-allowed/blob/main/docs/TESTING.md).
+- `Vinifera-VehicleThief-Allowed-binaries.zip`: DLL and matching symbols.
+- `Vinifera-VehicleThief-Allowed-source.zip`: patched source and pinned dependencies.
+- `Vinifera-VehicleThief-Allowed-test-kit.zip`: fixtures and review checks.
 
-`Vinifera-VehicleThief-Allowed-test-kit.zip` has the patch and fixtures.
-`Vinifera-VehicleThief-Allowed-source.zip` has the patched source and pinned
-submodule sources. `Vinifera-VehicleThief-Allowed-binaries.zip` has the DLL and
-matching debugging symbols. Check `SHA256SUMS.txt` for the download hashes.
+Use `SHA256SUMS.txt` to verify downloads. For another Vinifera branch, apply the
+source patch and rebuild against that branch's runtime.
